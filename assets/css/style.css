@@ -1,0 +1,575 @@
+/* =========================
+   RESET
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+}
+
+/* =========================
+   FONDO GENERAL (1ª IMAGEN)
+========================= */
+.page-bg {
+    width: 100vw;
+    height: 100vh;
+    background: url("../images/imagenfondo.png") center / cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =========================
+   CUADRO / MARCO INTERIOR
+   (2ª IMAGEN - MISMA)
+========================= */
+.frame {
+    position: relative;
+
+    width: min(150vh, 200vw);
+    height: min(90vh, 100vw);
+
+    background: url("../images/imagenfondo.png") center / cover no-repeat;
+
+    overflow: hidden;
+}
+
+/* Overlay MUY suave */
+.frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.06);
+    z-index: 1;
+}
+.frame::after {
+    pointer-events: none;
+}
+
+
+/* =========================
+   TEXTOS SUPERIORES
+========================= */
+.top-text {
+    position: absolute;
+    top: 24px;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    color: rgb(255, 255, 255);
+    z-index: 2;
+}
+
+.top-text.left {
+    left: 30px;
+}
+
+.top-text.center {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.top-text.right {
+    right: 30px;
+}
+
+/* =========================
+   MENÚ
+========================= */
+.menu {
+    position: absolute;
+    top: 90px;
+    right: 30px;
+
+    display: flex;
+    gap: 26px;
+
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+
+    z-index: 2;
+}
+
+.menu a {
+    color: rgb(255, 255, 255);
+    transition: opacity 0.3s;
+}
+
+.menu a:hover {
+    opacity: 0.5;
+}
+
+/* =========================
+   IMAGEN CENTRAL (INTEGRADA)
+========================= */
+.quote {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.quote img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+}
+
+/* =========================
+   AUTOR
+========================= */
+.author {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: rgb(255, 255, 255);
+    z-index: 2;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+
+    .frame {
+        width: min(92vw, 92vh);
+        height: min(92vw, 92vh);
+    }
+    
+    .menu {
+        flex-wrap: wrap;
+        gap: 14px;
+        right: 20px;
+    }
+
+    .top-text.left,
+    .author {
+        left: 20px;
+    }
+
+    .top-text.right {
+        right: 20px;
+    }
+}
+#bienvenida {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 3; /* MÁS alto que la imagen y el overlay */
+
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    color: rgb(255, 255, 255);
+    font-family: monospace;
+}
+#bienvenida {
+    text-transform: uppercase;
+    opacity: 0.85;
+}
+.cursor {
+    display: inline-block;
+    width: 8px;          /* ancho del cursor */
+    height: 1.4em;
+    background-color: #000;
+    margin-left: 6px;
+    vertical-align: bottom;
+    animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+/* =========================
+   CV
+========================= */
+.cv-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    text-align: center;
+}
+
+.cv-container h1 {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.cv-button {
+    display: inline-block;
+    padding: 14px 32px;
+    border: 1px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.cv-button:hover {
+    background: rgb(255, 255, 255);
+}
+#cv-title {
+    color: rgb(255, 255, 255);
+}
+
+/* =========================
+   CONTACTO
+========================= */
+.contact-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    text-align: center;
+    width: 320px;
+}
+
+.contact-container h1 {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    font-weight: 400;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 10px;
+    border: 1px solid rgb(255, 255, 255);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+}
+
+.contact-form textarea {
+    resize: none;
+    height: 100px;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgb(255, 255, 255);
+    background: none;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
+/* =========================
+   CONTACT PAGE
+========================= */
+
+.contact-container {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* ----- Título ----- */
+.contact-title {
+    color: rgba(240, 245, 250, 0.95);
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+}
+
+/* ----- Formulario ----- */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.92);
+    border: none;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #222;
+}
+
+.contact-form textarea {
+    min-height: 120px;
+    resize: none;
+}
+
+/* ----- Botón enviar ----- */
+.contact-form button {
+    margin-top: 10px;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid rgba(240, 245, 250, 0.4);
+    color: rgba(240, 245, 250, 0.9);
+    font-size: 13px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+    border-color: #f0c27b;
+    color: #f0c27b;
+}
+
+/* ----- Iconos sociales ----- */
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 25px;
+}
+
+.social-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden; /* CLAVE */
+    border: 1px solid rgba(240, 245, 250, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.social-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* CLAVE */
+    border-radius: 50%;
+    display: block;
+}
+
+.social-btn:hover {
+    border-color: #f0c27b;
+    transform: scale(1.08);
+}
+.form-success {
+    margin-top: 15px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: #f0c27b;
+    text-align: center;
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   ABOUT ME
+========================= */
+
+.about-container {
+    position: absolute;
+    top: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 65%;
+    max-height: calc(100% - 220px);
+
+    overflow-y: auto;
+    padding: 30px 35px;
+    padding-right: 45px;
+
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    border-radius: 6px;
+
+    color: rgba(245, 248, 252, 0.95);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    z-index: 2;
+}
+
+
+/* Scroll fino y elegante */
+.about-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.about-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.about-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 10px;
+}
+
+/* Texto */
+.about-container p {
+    margin-bottom: 18px;
+}
+
+.about-container strong {
+    color: #f0c27b;
+    font-weight: 500;
+}
+
+/* Listas */
+.about-container ul {
+    margin: 12px 0 20px 20px;
+}
+
+.about-container li {
+    margin-bottom: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-container {
+        width: 85%;
+        font-size: 0.9rem;
+    }
+}
+/* =========================
+   PROJECTS
+========================= */
+
+.projects-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 50px;
+}
+
+/* Botones */
+.projects-container .cv-button {
+    font-size: 1rem;
+    letter-spacing: 3px;
+    padding: 20px 42px;
+
+    white-space: nowrap; /* 🔹 fuerza una sola línea */
+
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    border-radius: 6px;
+}
+
+/* Hover elegante */
+.projects-container .cv-button:hover {
+    background: rgba(0, 0, 0, 0.55);
+    border-color: #f0c27b;
+}
+/* =========================
+   PROJECT DETAIL
+========================= */
+
+.projects-list {
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    max-height: calc(100% - 200px);
+    overflow-y: auto;
+}
+
+.project-card {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(6px);
+    border-radius: 8px;
+    padding: 25px;
+}
+
+.project-info h3 {
+    color: rgba(245,248,252,0.95);
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.project-info p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 18px;
+    color: rgba(245,248,252,0.85);
+}
+
+.project-links a {
+    display: inline-block;
+    margin-right: 15px;
+    padding: 10px 22px;
+    border: 1px solid rgba(240,245,250,0.4);
+    color: rgba(240,245,250,0.9);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+.project-links a:hover {
+    border-color: #f0c27b;
+    color: #f0c27b;
+}
+
+/* El iframe NO captura clicks */
+.project-preview iframe {
+    pointer-events: none;
+    width: 100%;
+    height: 220px;
+    border: none;
+    border-radius: 6px;
+}
+
+/* Aseguramos que los botones sí son clicables */
+.project-links a {
+    pointer-events: auto;
+    position: relative;
+    z-index: 10;
+}
+.backend-preview {
+    height: 220px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    color: rgba(245,248,252,0.9);
+    background: rgba(0,0,0,0.45);
+}
