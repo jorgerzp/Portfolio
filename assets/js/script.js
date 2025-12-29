@@ -49,25 +49,41 @@ window.addEventListener("load", escribirCV);
 
 
 /* =========================
-   FORMULARIO CONTACTO
+   FORMULARIO CONTACTO 
 ========================= */
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector(".contact-form");
     if (!form) return;
 
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault(); // Detenemos el envío automático un segundo
 
-        // Evitar duplicar mensajes
-        const oldMsg = document.querySelector(".form-success");
-        if (oldMsg) oldMsg.remove();
+        // Enviamos los datos a Web3Forms usando fetch
+        const formData = new FormData(form);
+        
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            });
 
-        // Crear mensaje de éxito
-        const successMsg = document.createElement("p");
-        successMsg.textContent = "Mensaje enviado correctamente ✔";
-        successMsg.className = "form-success";
+            if (response.ok) {
+                // Si Web3Forms responde que OK, mostramos tu mensaje de éxito
+                const oldMsg = document.querySelector(".form-success");
+                if (oldMsg) oldMsg.remove();
 
-        form.appendChild(successMsg);
-        form.reset();
+                const successMsg = document.createElement("p");
+                successMsg.textContent = "Mensaje enviado correctamente ✔";
+                successMsg.className = "form-success";
+
+                form.appendChild(successMsg);
+                form.reset();
+            } else {
+                alert("Hubo un error al enviar. Inténtalo de nuevo.");
+            }
+        } catch (error) {
+            alert("Error de conexión. Revisa tu internet.");
+        }
     });
 });
+
