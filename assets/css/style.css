@@ -352,7 +352,11 @@ html, body {
     border-radius: 10px;
 }
 
-.about-container p { margin-bottom: 18px; }
+.about-container p { 
+    margin-bottom: 18px;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto; }
 .about-container strong { color: #f0c27b; font-weight: 500; }
 .about-container ul { margin: 12px 0 20px 20px; }
 .about-container li { margin-bottom: 8px; }
@@ -493,3 +497,4 @@ html, body {
     .projects-container .cv-button { padding: 15px 25px; font-size: 0.8rem; }
     .contact-container { width: 90%; }
 }
+
