@@ -497,33 +497,4 @@ html, body {
     .projects-container .cv-button { padding: 15px 25px; font-size: 0.8rem; }
     .contact-container { width: 90%; }
 }
-@media (max-width: 480px) {
-
-    .top-text {
-        position: static;
-        display: block;
-        width: 100%;
-        text-align: center;
-        margin-bottom: 4px;
-        font-size: 0.55rem;
-        letter-spacing: 1px;
-    }
-
-    .top-text.left,
-    .top-text.right {
-        opacity: 0.7;
-    }
-
-    .top-text.center {
-        font-size: 0.65rem;
-        font-weight: 500;
-        margin-bottom: 10px;
-    }
-
-    /* Contenedor improvisado visual */
-    .frame {
-        padding-top: 20px;
-    }
-}
-
 
