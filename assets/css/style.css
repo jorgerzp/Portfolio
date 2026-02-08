@@ -497,4 +497,19 @@ html, body {
     .projects-container .cv-button { padding: 15px 25px; font-size: 0.8rem; }
     .contact-container { width: 90%; }
 }
+/* =========================
+   AJUSTES ESPECÍFICOS PROYECTOS
+========================= */
+
+/* Clase para proyectos que necesitan verse más altos (como la Cafetería) */
+.project-preview.large-preview iframe {
+    height: 500px; /* Forzamos una altura mayor para que se vea bien */
+}
+
+/* Ajuste para móviles para que no se salga de la pantalla */
+@media (max-width: 768px) {
+    .project-preview.large-preview iframe {
+        height: 350px;
+    }
+}
 
