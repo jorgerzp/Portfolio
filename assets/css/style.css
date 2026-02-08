@@ -447,6 +447,7 @@ html, body {
     color: #f0c27b;
 }
 
+/* Estilo por defecto para los iframes (los pequeños) */
 .project-preview iframe {
     pointer-events: none;
     width: 100%;
@@ -454,6 +455,11 @@ html, body {
     border: none;
     border-radius: 6px;
     overflow: hidden;
+}
+
+/* === AÑADIDO: Estilo especial para el proyecto Cafetería (Mediano) === */
+.project-preview.special-view iframe {
+    height: 380px; /* Ni muy pequeño ni muy alargado, un punto medio */
 }
 
 .backend-preview {
@@ -469,7 +475,7 @@ html, body {
 }
 
 /* =========================
-    RESPONSIVE (AÑADIDO SIN TOCAR LO ANTERIOR)
+    RESPONSIVE
 ========================= */
 
 @media (max-width: 1200px) {
@@ -485,10 +491,19 @@ html, body {
 @media (max-width: 768px) {
     .about-container { width: 85%; font-size: 0.9rem; }
     .menu { flex-wrap: wrap; gap: 14px; right: 20px; top: 70px; }
-    .top-text.left, .author { left: 20px; }
-    .top-text.right { right: 20px; }
+    
+    /* Arreglo para que no se superponga texto en móvil */
+    .top-text.left, .top-text.right { display: none; }
+    .top-text.center { width: 100%; text-align: center; }
+
+    .author { left: 20px; }
     .projects-list { width: 95%; top: 90px; }
     .project-card { grid-template-columns: 1fr; }
+    
+    /* Ajuste móvil para el iframe especial */
+    .project-preview.special-view iframe {
+        height: 300px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -497,19 +512,3 @@ html, body {
     .projects-container .cv-button { padding: 15px 25px; font-size: 0.8rem; }
     .contact-container { width: 90%; }
 }
-/* =========================
-   AJUSTES ESPECÍFICOS PROYECTOS
-========================= */
-
-/* Clase para proyectos que necesitan verse más altos (como la Cafetería) */
-.project-preview.large-preview iframe {
-    height: 500px; /* Forzamos una altura mayor para que se vea bien */
-}
-
-/* Ajuste para móviles para que no se salga de la pantalla */
-@media (max-width: 768px) {
-    .project-preview.large-preview iframe {
-        height: 350px;
-    }
-}
-
